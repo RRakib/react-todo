@@ -10,7 +10,7 @@ class App extends Component {
            {
              id: 1,
              title : "Wakeup at 8am",
-             completed: false
+             completed: true
            },
            {
              id: 2,
@@ -21,6 +21,8 @@ class App extends Component {
 
     }
   }
+
+
   render() {
     return (
       <div className="App">
