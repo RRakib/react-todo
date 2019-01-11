@@ -5,9 +5,10 @@ class TodoItems extends Component {
       return{
         textDecoration : this.props.todo.completed? "line-through" : "none",
         background : "#eee",
-        padding : 5,
+        padding : 10,
         borderBottom : "2px solid #ccc",
-        color : this.props.todo.completed? "#4d4d4d" : "black"
+        color : this.props.todo.completed? "#4d4d4d" : "black",
+        fontSize : 20
       }
   }
 
@@ -15,22 +16,35 @@ class TodoItems extends Component {
       const {id,title} = this.props.todo;
     return (
       <div style={this.getStyle()}>
-        <p>
+        <div>
             <input 
                 type="checkbox"
                 onChange = {() => this.props.markComplete(id)}
                 checked = {this.props.todo.completed}
             />
             {title}
-            <button onClick = {() => this.props.handleClick(id)}>
+            <button style = {delBtn} onClick = {() => this.props.handleClick(id)}>
                 X
             </button>
 
-        </p>
+        </div>
       </div>
     )
   }
 }
+
+const delBtn= {
+    float : "right",
+    background : "red",
+    borderRadius : "50%",
+    outline : "none",
+    border : "none",
+    color : "white",
+    fontSize : 15
+
+
+}
+
 
 TodoItems.propTypes = {
     todo : PropTypes.object.isRequired

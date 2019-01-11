@@ -28,15 +28,17 @@ class Todos extends Component {
       })
     return (
       <div>
-        <h1>Todo App</h1>
-        <form onSubmit = {this.handleSubmit}>
+        <h1 style = {background}>Todo App</h1>
+        <form style={form} onSubmit = {this.handleSubmit}>
         <input 
+                style = {input}
                 type = "text"
                 name = "title"
                 onChange = {(e) => {this.setState({ title : e.target.value})}}
                 value = {this.state.title}
+                placeholder = "Add Your Todo..."
         />
-        <button>Add Todo</button>
+        <button style = {frmBtn}>Add Todo</button>
         </form>
         {todos}
       </div>
@@ -44,6 +46,25 @@ class Todos extends Component {
   }
 }
 
+
+const background = {
+    background : "#333",
+    color: "white",
+    padding : 15,
+    textAlign : "center"
+}
+const form = {
+    marginTop : 10
+}
+const input = {
+    width : "84%",
+    height : 35
+}
+const frmBtn = {
+    width : "15%",
+    height : 40,
+    fontSize: 17
+}
 
 Todos.propTypes = {
     todos : PropTypes.array.isRequired

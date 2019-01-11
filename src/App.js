@@ -41,9 +41,11 @@ class App extends Component {
     })
   }
   handleSubmit = (title) => {
+    let num = Math.floor(Math.random() * 10);
+    console.log(num)
     let newTodo = 
       {
-        id : 4,
+        id : num,
         title,
         completed : false
       }
