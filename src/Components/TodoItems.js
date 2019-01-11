@@ -1,53 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types"
 class TodoItems extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            completed : this.props.todo.completed
-        }
-    }
-
-  handleChange = () => {
-        this.setState((pS) => {
-            return{
-                completed : !pS.completed
-            }
-        })
-  }
-
   getStyle = () => {
-      if(this.props.todo.id === this.props.todo.id && this.state.completed){
-          return{
-              textDecoration : "line-through",
-              background : "#eee",
-              padding : 5,
-              borderBottom : "2px solid #ccc",
-              color : "#4d4d4d"
-          }
+      return{
+        textDecoration : this.props.todo.completed? "line-through" : "none",
+        background : "#eee",
+        padding : 5,
+        borderBottom : "2px solid #ccc",
+        color : this.props.todo.completed? "#4d4d4d" : "black"
       }
-      else{
-          return{
-              textDecoration : "none",
-              background : "#eee",
-              padding : 5,
-              borderBottom : "2px solid #ccc"
-          }
-        }
   }
-
 
   render() {
+      const {id,title} = this.props.todo;
     return (
       <div style={this.getStyle()}>
-        <h3>
+        <p>
             <input 
                 type="checkbox"
-                onChange = {this.handleChange}
-                checked = {this.state.completed}
+                onChange = {() => this.props.markComplete(id)}
+                checked = {this.props.todo.completed}
             />
-            {this.props.todo.title}
-        </h3>
+            {title}
+            <button onClick = {() => this.props.handleClick(id)}>
+                X
+            </button>
+
+        </p>
       </div>
     )
   }

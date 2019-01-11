@@ -21,13 +21,46 @@ class App extends Component {
 
     }
   }
-
+  markComplete = (id) => {
+    this.setState({
+      todo : this.state.todo.map((items) => {
+        if(items.id === id){
+          items.completed = !items.completed
+        }
+        return items;
+      })
+    })
+  }
+  handleClick = (id) => {
+    this.setState({
+      todo : this.state.todo.filter((items) => {
+        return(
+        items.id !== id
+        )
+      })
+    })
+  }
+  handleSubmit = (title) => {
+    let newTodo = 
+      {
+        id : 4,
+        title,
+        completed : false
+      }
+    this.setState({
+      todo : [...this.state.todo , newTodo]
+    })
+  }
 
   render() {
     return (
       <div className="App">
-        <h1>Hello I am Working</h1>
-        <Todos todos={this.state.todo}/>
+        <Todos 
+            todos={this.state.todo}
+            markComplete = {this.markComplete}
+            handleClick  = {this.handleClick}
+            handleSubmit = {this.handleSubmit}
+        />
       </div>
     );
   }
